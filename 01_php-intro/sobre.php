@@ -1,3 +1,9 @@
+<!--
+  Disciplina : Desenvolvimento Web II (DWII)
+  Aula       : 03 - PHP Intro
+  Autor      : Gabriela Bomfati Garcia
+  Data       : 02/03/2026
+-->
 <!-- 01_php-intro/sobre.php -->
  <?php
  $nome = "Gabriela Bomfati Garcia";
@@ -18,9 +24,14 @@
    <div style="max-width: 800px; margin: 40px auto; padding: 0 20px;">
     <h1 style="color: #ab5084 ;"> Sobre mim</h1>
     <p>Olá! Sou <strong><?php echo $nome; ?></strong>, estudante de Técnico em Infromática no IFPR de Ponta Grossa.</p>
-    <p>Meu principal interesse, nos estudos é na área técnica e na parte de exatas,
-        quero me formar no IFPR e cursar faculdade, penso em seguir na área técnica e cursar algo nessa área, particularmente prefiro a área de banco de dados.
-        E futuramente pretendo seguir profissão nesta área.
+    <p>Atualmente moro em Ponta Grossa, no Paraná, estudante do 3°ano do Técnico em Informática no IFPR, gosto bastante de aprender coisas novas principalmente na área da tecnologia. 
+    No meu tempo livre gosto de ouvir música, assitir séries e filmes e também aproveitar o tempo com meus amigos e família. 
+    Sempre tive interesse em entender como os sistemas funcionam, por trás de uma tela bonita.<br>
+    Escolhi a área de informática porque sempre gostei muito e existia uma curiosidade de como essas tecnologias funcionam, 
+    também gosto e tenho uma certa facilidade em exatas. 
+    Durante o curso, venho desenvolvendo interesse principalmente na área de banco de dados, pois acho interessante a forma como as informações são organizadas e utilizadas nos sistemas. 
+    Futuramente, pretendo concluir o curso técnico no IFPR, fazer uma faculdade na área de tecnologia, e talvez me especializar na área de banco de dados, 
+    sendo meu objetivo é trabalhar na área de tecnologia, especialmente nesta área construindo uma carreira neste campo.
     </p>
     <a href="index.php"
     style="color: #551a8b ; font-weight: bold;"> Voltar ao início</a>

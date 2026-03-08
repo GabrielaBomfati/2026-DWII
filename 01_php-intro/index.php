@@ -10,7 +10,7 @@
 <?php
     // Variáveis PHP - serão usadas no HTML abaixo
     $nome = "Gabriela Bomfati Garcia";
-    $profissao = "Estudante de  Tecnologia";
+    $profissao = "Técnico em Informática em formação";
     $curso = "Técnico em Informática - IFPR";
     $pagina_atual = "inicio";
     ?>
