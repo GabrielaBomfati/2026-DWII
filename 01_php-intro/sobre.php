@@ -1,14 +1,19 @@
-<!--
-  Disciplina : Desenvolvimento Web II (DWII)
-  Aula       : 03 - PHP Intro
-  Autor      : Gabriela Bomfati Garcia
-  Data       : 02/03/2026
--->
-<!-- 01_php-intro/sobre.php -->
- <?php
- $nome = "Gabriela Bomfati Garcia";
- $pagina_atual = "sobre";
-?>
+<?php
+/**
+ * ===============================================================
+ * Arquivo: 01_php-intro/sobre.php 
+ * Disciplina: Desenvolvimento Web II (2026-DWII)
+ * Aula: 03 - Aruqitetura Web e Introdução ao PHP
+ * Autor: Gabriela Bomfati Garcia
+ * ===============================================================
+ */
+    // Variáveis PHP - serão usadas no HTML abaixo
+    $nome = "Gabriela Bomfati Garcia";
+    $pagina_atual = "sobre"; // define o item ativo no menu
+    $caminho_raiz = "../"; // sobe um vível até 2026-DWII/
+    $titulo_pagina = "Sobre mim - {$nome}";
+    ?>
+
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -19,7 +24,7 @@
 </head>
 <body style="font-family: Arial, sans-serif; margin: 0; background: white;">
     
-    <?php include 'includes/cabecalho.php'; ?>
+    <?php include '../includes/cabecalho.php'; ?>
 
    <div style="max-width: 800px; margin: 40px auto; padding: 0 20px;">
     <h1 style="color: #ab5084 ;"> Sobre mim</h1>
@@ -32,10 +37,10 @@
     Durante o curso, venho desenvolvendo interesse principalmente na área de banco de dados, pois acho interessante a forma como as informações são organizadas e utilizadas nos sistemas. 
     Futuramente, pretendo concluir o curso técnico no IFPR, fazer uma faculdade na área de tecnologia, e talvez me especializar na área de banco de dados, 
     sendo meu objetivo é trabalhar na área de tecnologia, especialmente nesta área construindo uma carreira neste campo.
-    </p>
+    </p><br>
     <a href="index.php"
     style="color: #551a8b ; font-weight: bold;"> Voltar ao início</a>
     </div>  
-     <?php include 'includes/rodape.php'; ?>
+     <?php include '../includes/rodape.php'; ?>
 </body>
 </html>

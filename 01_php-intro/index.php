@@ -1,18 +1,19 @@
-<!-- 01_php-intro/index.php -->
- <!--
-    Disciplina: Desenvolvimento Web II (DWII)
-    Aula: 03 - Arquitetura Web e Introdução ao PHP
-    Autor: Gabriela Bomfati Garcia
-    Data: 02/03/2026
-    Repositório: https://github.com/GabrielaBomfati/2026-DWII
--->
-
 <?php
+/**
+ * ===============================================================
+ * Arquivo: 01_php-intro/index.php 
+ * Disciplina: Desenvolvimento Web II (2026-DWII)
+ * Aula: 03 - Arquitetura Web e Introdução ao PHP
+ * Autor: Gabriela Bomfati Garcia
+ * ===============================================================
+ */
     // Variáveis PHP - serão usadas no HTML abaixo
     $nome = "Gabriela Bomfati Garcia";
     $profissao = "Técnico em Informática em formação";
     $curso = "Técnico em Informática - IFPR";
-    $pagina_atual = "inicio";
+    $pagina_atual = "inicio"; // define o item ativo no menu
+    $caminho_raiz = "../"; // sobe um vível até 2026-DWII/
+    $titulo_pagina = "Portfólio - {$nome}";
     ?>
 
 <!DOCTYPE html>
@@ -21,32 +22,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfólio - <?php echo $nome; ?></title>
-    <style>
-        body {
-                font-family: Arial, sans-serif; margin: 0; background: white;
-        }
-       
-        .hero {
-                border:4px solid #af06d1; color:#570b57; text-align: center; padding: 60px 20px; margin: 20px;
-        }
-        .hero h1 {
-                font-size: 2.5em; margin-bottom: 10px;
-        }
-        .hero p {
-                font-size: 1.2em; opacity: 0.9;
-        }
-        .container {
-                max-width: 800px; margin: 40px auto; padding: 0 20px;
-        }
-</style>
+    
+     <!-- SEM bloco <style> aqui - CSS vem do includes/style.css -->
 </head>
 
 <body>
-
-    <!-- Substitua o bloco <nav>...</nav> por: -->
-     <?php include 'includes/cabecalho.php'; ?>
-
-    <div class="hero">
+<?php include '../includes/cabecalho.php'; ?>
+    <div class="inicio">
         <h1><?php echo $nome; ?></h1>
         <p><?php echo $profissao; ?> | <?php echo $curso; ?></p>
     </div>
@@ -58,7 +40,7 @@
     </div>
 
     <!-- Substitua o bloco <footer>...</footer> por: -->
-     <?php include 'includes/rodape.php'; ?>
+     <?php include '../includes/rodape.php'; ?>
 
 </body> 
 </html>
