@@ -3,24 +3,17 @@
  * ==================================================================
  * ARQUIVO: 02_formularios/contato.php (versão com validação)
  * Disciplina: Desenvolvimento Web II (2026-DWII)
- * Aula: 04 - PHP para Web: Fomrulários, GET e POST
+ * Aula: 04 - PHP para Web: Formulários, GET e POST
  * Autor: Gabriela Bomfati Garcia
  * Conceitos: $_SERVER, REQUEST_METHOD, trim(), empty(),
  *            strlen(), array de erros, separação lógica/visual
  * =====================================================================
  * 
- * Página de contato - primeira versão com GET.
+ * Página de contato - primeira versão final.
  * cabaecalho.php gerar o <head> completo (incluindo o <link>
  * para style.css) e o <bofy> até o <main>
  */
 
-// VARIÁVEIS DO TEMPLATE
-// Definida ANTES do include - cabecalho.php as usa par 
-// montar o <title>, o <link> do CSS e o item ativo do menu.
-$nome = "Gabriela Bomfati Garcia";
-$pagina_atual = "contato";
-$caminho_raiz = "../"; // sobe de 02_formularios/ até a raiz
-$titulo_pagina = "Contato";
 
 // RECEBER DADOS DO FORUMLARIO
 // $_GET é um array superglobal - PHP preenche4 automaticamente
@@ -34,6 +27,8 @@ $titulo_pagina = "Contato";
 // possa referenciá-las mesmo antes de qualquer envio.
 $nome_visitante = '';
 $mensagem = '';
+$email = '';
+$assunto = '';
 $erros = []; // array vazio = nenhum erro ainda
 // PROCESSAR SOMENTE SE VEIO POST
 // $_SERVER['REQUEST_METHOD'] informa como a página foi acessada.
@@ -42,6 +37,8 @@ $erros = []; // array vazio = nenhum erro ainda
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // trim() remove espaços das bordas - evita aceitar " " como válido
     $nome_visitante = trim($_POST['nome_visitante'] ?? '');
+    $email = trim($_POST['email'] ?? '');
+    $assunto = trim($_POST['assunto'] ?? '');
     $mensagem = trim($_POST['mensagem'] ?? '');
 
 //VALIDAÇÕES
@@ -50,11 +47,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 if (empty($nome_visitante)){
     $erros[] = 'O campo Nome é obrigatório.';
 }
+if (empty($email)) {
+        $erros[] = 'O campo E-mail é obrigatório.';
+} elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    $erros[] = 'Informe um e-mail válido.';
+}
+
+if (empty($assunto)) {
+    $erros[] = 'Selecione um assunto.';
+}
+
 if (empty($mensagem)){
     $erros[] = 'O campo Mensagem é obrigatório.';
 } elseif (strlen($mensagem) < 10){
     // elseif evita duplicar erro qaundo $mensagem já está vazia
     $erros[] = "A mensagem deve ter pelo menos 10 caracteres.";
+} elseif (strlen($mensagem) > 500){
+    $erros[] = "A mensagem deve ter no máximo 500 caracteres.";
 }
 }
 // REDIRECIONAR SE NÃO HÁ ERROS
@@ -65,10 +74,16 @@ if (empty($mensagem)){
 // exit encerra o PHP imediatamente - sem exit, o código
 // abaixo continuaria executando mesmo após o redirect.
 if (empty($erros) && $_SERVER['REQUEST_METHOD'] === 'POST'){
-    header('Location: obrigado.php?nome=' . urlencode($nome_visitante));
+    header('Location: obrigado.php?nome=' . urlencode($nome_visitante) . '&assunto=' . urlencode($assunto));
     exit;
 }
-
+// VARIÁVEIS DO TEMPLATE
+// Definida ANTES do include - cabecalho.php as usa par 
+// montar o <title>, o <link> do CSS e o item ativo do menu.
+$nome = "Gabriela Bomfati Garcia";
+$pagina_atual = "contato";
+$caminho_raiz = "../"; // sobe de 02_formularios/ até a raiz
+$titulo_pagina = "Contato";
 ?>
 
 <!--cabecalho.php gera tudo até <body>--> 
@@ -93,15 +108,44 @@ if (empty($erros) && $_SERVER['REQUEST_METHOD'] === 'POST'){
 -->
  <form class="form-container" action="contato.php" method="post">
     <label>Seu nome:</label>
-    <input type="text" name="nome_visitante">
+    <input type="text" name="nome_visitante"
+    value="<?php echo htmlspecialchars($nome_visitante); ?>">
+
+    <label>Seu e-mail:</label>
+    <input type="email" name="email"
+    value="<?php echo htmlspecialchars($email); ?>">
+
+    <label>Assunto:</label>
+    <select name="assunto">
+    <option value="">Selecione um assunto</option>
+    <option value="Duvida"
+    <?php if ($assunto === 'Duvida') echo 'selected'; ?>>
+    ❓ Dúvida
+    </option>
+
+    <option value="Proposta de trabalho"
+    <?php if ($assunto === 'Proposta de trabalho') echo 'selected'; ?>>
+     👩🏻‍💻 Proposta de trabalho
+    </option>
+
+    <option value="Colaboracao"
+    <?php if ($assunto === 'Colaboracao') echo 'selected'; ?>>
+    ℹ️  Colaboração
+    </option>
+
+    <option value="Outro"
+    <?php if ($assunto === 'Outro') echo 'selected'; ?>>
+    ➡️  Outro
+    </option>
+</select>
 
     <label>Sua mensagem:</label>
-    <textarea name="mensagem" rows="4"></textarea>
-
+    <textarea name="mensagem" rows="4"><?php echo htmlspecialchars($mensagem); ?></textarea>
+    <p class= "contador">
+    <?php echo strlen($mensagem); ?> de 500 caracteres usados
+    </p>
     <button type="submit">Enviar</button>
 
 </form>
-
-
 
 <?php include '../includes/rodape.php'; ?>
