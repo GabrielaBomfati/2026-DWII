@@ -16,15 +16,6 @@
     $titulo_pagina = "Portfólio - {$nome}";
     ?>
 
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfólio - <?php echo $nome; ?></title>
-    
-     <!-- SEM bloco <style> aqui - CSS vem do includes/style.css -->
-</head>
 
 <body>
 <?php include '../includes/cabecalho.php'; ?>

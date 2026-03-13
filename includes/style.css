@@ -1,3 +1,16 @@
+/* ════════════════════════════════════════════════════════════
+ * ARQUIVO    : includes/style.css
+ * Disciplina : Desenvolvimento Web II (2026-DWII)
+ * Aula       : 04 — PHP para Web: Formulários, GET e POST
+ * Autor      : Gabriela Bomfati Garcia
+ * Escopo     : Estilos globais compartilhados por todas as aulas
+ * ════════════════════════════════════════════════════════════
+ *
+ * Um único arquivo CSS para todo o projeto.
+ * Para mudar o visual do menu, do rodapé ou dos formulários:
+ * edite AQUI — a mudança reflete em todas as páginas.
+ */
+
 *{
     box-sizing: border-box;
     margin:0;
@@ -88,7 +101,10 @@ h1, h2, h3{
     color:#374151;
 }
 
-
+.contador{
+    text-align: right;
+    color:#88898d;
+}
 .icone{
     font-size:28px;
 }
@@ -122,12 +138,13 @@ h1, h2, h3{
 
 .btn{
     display:inline-block;
-    margin-top:12px;
+    margin:12px;
     padding:10px 18px;
     color:white;
     text-decoration:none;
     border-radius:6px;
     font-size:14px;
+    background: #3ba34a;
 }
 
 .btn:hover{
@@ -151,51 +168,63 @@ label{
     margin-bottom:6px;
 }
 
-input[type="text"],
+label:first-of-type { margin-top: 0; }
+
+input[type="text"],input[type="email"],
 textarea{
     width:100%;
     padding:10px;
     border:1px solid #d1d5db;
     border-radius:6px;
+    font-size: 15px;
+    font-family: Arial, sans-serif;
 }
 
 textarea{
     resize:vertical;
 }
-
-button{
-    margin-top:20px;
-    background:#3b579d;
-    color:white;
-    border:none;
-    padding:12px 28px;
+select{
+    padding:10px;
+    border:1px solid #d1d5db;
     border-radius:6px;
-    cursor:pointer;
+    font-size: 15px;
+    font-family: Arial, sans-serif;
 }
 
-button:hover{
-    background:#2a4080;
+button[type="submit"] {
+  margin-top: 20px;
+  background: #dd9cdd;
+  color: #570b57;
+  border: none;
+  padding: 12px 28px;
+  border-radius: 6px;
+  font-size: 15px;
+  cursor: pointer;
 }
+button[type="submit"]:hover { background: #dd9cdd; }
 
 /* ═══════════════════════════════════════════
    Alertas
 ═══════════════════════════════════════════ */
 
-.alerta-erro{
-    background:#fce8e8;
-    border-left:4px solid #cf1c21;
-    border-radius:0 8px 8px 0;
-    padding:18px 22px;
-    margin-top:20px;
+.alerta-erro {
+  background: #fce8e8;
+  border-left: 4px solid #cf1c21;
+  border-radius: 0 8px 8px 0;
+  padding: 18px 22px;
+  margin: 20px;
 }
+.alerta-erro h3 { color: #cf1c21; margin-top: 0; }
 
-.alerta-sucesso{
-    background:#e9f5ea;
-    border-left:4px solid #3ba34a;
-    border-radius:0 8px 8px 0;
-    padding:18px 22px;
-    margin-top:20px;
+.alerta-sucesso {
+  background: #e9f5ea;
+  border-left: 4px solid #3ba34a;
+  border-radius: 0 8px 8px 0;
+  padding: 18px 22px;
+  margin-top: 18px;
 }
+.alerta-sucesso h3 { color: #3ba34a; margin-top: 0; }
+
 
 
 footer{
@@ -207,3 +236,10 @@ footer{
     margin: 20px;
     font-size:14px;
 }
+
+/* ── Página de confirmação ──────────────────────────────── */
+.confirmacao { text-align: center; margin-top: 60px; background: #e9f5ea; border-left: 4px solid #3ba34a; }
+.confirmacao-icone { font-size: 60px; margin: 0; }
+.confirmacao-titulo { color: #3ba34a; margin: 16px 0 8px; }
+.confirmacao-assunto {font-size: 16px; color: black;}
+.confirmacao-texto { font-size: 16px; color: black; margin-bottom: 24px; }

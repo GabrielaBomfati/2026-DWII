@@ -15,13 +15,7 @@
     ?>
 
 
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sobre - <?php echo $nome; ?></title>
-</head>
+
 <body style="font-family: Arial, sans-serif; margin: 0; background: white;">
     
     <?php include '../includes/cabecalho.php'; ?>

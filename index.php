@@ -29,7 +29,7 @@ $aulas = [
         "nome" => "Apresentação Pessoal",
         "descricao" => "Página estática com HTML e CSS - foto de perfil e layout responsivo.",
         "link" => "00_apresentacao/index.html",
-        "icone" => "👨‍💻",
+        "icone" => "👩🏻‍💻",
         "cor" => "#3b579d",
         "conceitos" => "HTML semântico, CSS Flexbox, responsividade",
     ],
@@ -75,14 +75,14 @@ $aulas = [
     
 <!-- CABEÇALHO -- mesmo padrão visual das demais páginas -->
  <header>
-    <h1><?php echo htmlspecialchars($nome); ?> 👨‍💻</h1>
+    <h1><?php echo htmlspecialchars($nome); ?> 👩🏻‍💻</h1>
     <p><?php echo htmlspecialchars($subtitulo); ?></p>
 </header>
 <div class="container">
 
     <!-- INSTRUÇÃO DE USO -- exibida logo ao abrir o repositório -->
      <div class=" card" style="margin-top: 0;">
-        <h3> Como executar este repositório</h3>
+        <h3> ▶️ Como executar este repositório</h3>
         <p style="font-size: 14px; color: #374151;">
             Suba o servidor PHP na <strong>raiz</strong> para acessar todas as aulas:
         </p>
@@ -97,7 +97,7 @@ $aulas = [
     </div>
 
     <!-- LISTAGEM DAS AULAS -- foreach percorre o array $aulas --> 
-     <h2 class="titulo-secao"> Projetos por Aula</h2>
+     <h2 class="titulo-secao"> 🗂️ Projetos por Aula</h2>
 
      <?php foreach ($aulas as $aula): ?>
         <!--
@@ -131,7 +131,7 @@ $aulas = [
 
     <!-- TIMESTAMP -- demonstra date () - igual ao index.php do portfólio -->
       <p style="text-align: right; font-size: 13px; color: #9ca3af; margin-top: 8px;">
-        Gerado em: <?php echo date("d/m/Y \à\s H:i:s"); ?>
+        ⏱️ Gerado em: <?php echo date("d/m/Y \à\s H:i:s"); ?>
      </p>
 
      </div>
