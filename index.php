@@ -81,7 +81,7 @@ $aulas = [
 <div class="container">
 
     <!-- INSTRUÇÃO DE USO -- exibida logo ao abrir o repositório -->
-     <div class=" card" style="margin-top: 0;">
+     <div class="card" style="margin-top: 0;">
         <h3> ▶️ Como executar este repositório</h3>
         <p style="font-size: 14px; color: #374151;">
             Suba o servidor PHP na <strong>raiz</strong> para acessar todas as aulas:

@@ -1,0 +1,15 @@
+{
+  "name": "PHP + MariaDB — DWII 2026",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "app",
+  "workspaceFolder": "/workspace",
+  "forwardPorts": [8000, 3306],
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "bmewburn.vscode-intelephense-client",
+        "cweijan.vscode-mysql-client2"
+      ]
+    }
+  }
+}

@@ -1,0 +1,24 @@
+version: '3.8'
+services:
+  # Container PHP (ambiente de desenvolvimento)
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ..:/workspace:cached
+    depends_on:
+      - db
+    network_mode: service:db
+    command: sleep infinity
+  # Container MariaDB
+  db:
+    image: mariadb:10.11
+    restart: unless-stopped
+    environment:
+      MARIADB_ROOT_PASSWORD: dwii2026
+      MARIADB_DATABASE:      dwii_db
+      MARIADB_USER:          dwii_user
+      MARIADB_PASSWORD:      dwii2026
+    ports:
+      - "3306:3306"
