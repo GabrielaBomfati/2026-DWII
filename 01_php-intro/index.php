@@ -12,7 +12,7 @@
     $profissao = "Técnico em Informática em formação";
     $curso = "Técnico em Informática - IFPR";
     $pagina_atual = "inicio"; // define o item ativo no menu
-    $caminho_raiz = "../"; // sobe um vível até 2026-DWII/
+    $caminho_raiz = "../"; // sobe um nível até 2026-DWII/
     $titulo_pagina = "Portfólio - {$nome}";
     ?>
 

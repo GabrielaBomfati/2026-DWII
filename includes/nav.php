@@ -53,5 +53,8 @@ function menu_class($item, $atual) {
     <?php echo menu_class("contato", $pagina_atual); ?>>
      📬Entre em contato
   </a>
+   <a href="<?php echo $caminho_raiz; ?>03_pdo/index.php"
+    <?php echo menu_class("catalogo", $pagina_atual); ?>>
+     🗄️ Catálogo
+  </a>
 </nav>
-

@@ -19,6 +19,7 @@
 // -------- VARIÁVEIS DE CONTEÚDO ----------------------------
 $nome = "Gabriela Bomfati Garcia";
 $subtitulo = "Repositório 2026 - Desenvolvimento Web II";
+$caminho_raiz = '';
 
 // -------- CATÁLOGO DE AULAS --------------------------------
 // Array associativo:: cada aula é um bloco [...] com suas chaves.
@@ -31,7 +32,7 @@ $aulas = [
         "link" => "00_apresentacao/index.html",
         "icone" => "👩🏻‍💻",
         "cor" => "#3b579d",
-        "conceitos" => "HTML semântico, CSS Flexbox, responsividade",
+        "conceitos" => "HTML semântico, CSS Flexbox, responsividade.",
     ],
     [
         "numero" => "03",
@@ -40,7 +41,7 @@ $aulas = [
         "link" => "01_php-intro/index.php",
         "icone" => "🐘",
         "cor" => "#ec4899",
-        "conceitos" => "Variáveis, echo, include, foreach, operador ternário",  
+        "conceitos" => "Variáveis, echo, include, foreach, operador ternário.",  
     ],
     [
         "numero" => "04",
@@ -49,7 +50,16 @@ $aulas = [
         "link" => "02_formularios/contato.php",
         "icone" => "📬",
         "cor" => "#3ba34a",
-        "conceitos" => "$_POST, validação, htmlspecialchars(), header() + exit",  
+        "conceitos" => '$_POST, validação, htmlspecialchars(), header() + exit.',  
+    ],
+    [
+        "numero" => "05",
+        "nome" => "Catálogo de Tecnologias",
+        "descricao" => "Listagem e detalhamento de tecnologias com dados do banco via PDO, uso de prepared statements e proteção XSS.",
+        "link" => "03_pdo/index.php",
+        "icone" => "🗄️",
+        "cor" => "#c2410c",
+        "conceitos" => "PDO, query(), prepare() + execute(), filter_input(), htmlspecialchars(), header() + exit.",
     ],
 ];
 ?>
