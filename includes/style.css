@@ -243,3 +243,56 @@ footer{
 .confirmacao-titulo { color: #3ba34a; margin: 16px 0 8px; }
 .confirmacao-assunto {font-size: 16px; color: black;}
 .confirmacao-texto { font-size: 16px; color: black; margin-bottom: 24px; }
+
+/*Erro ID */
+.confirmacao404{ text-align: center; margin-top: 60px; background: #fce8e8; border-left: 4px solid #cf1c21;}
+.confirmacao-icone { font-size: 60px; margin: 0; }
+.confirmacao-titulo404 { color: #cf1c21; margin: 16px 0 8px; }
+.confirmacao-texto { font-size: 16px; color: black; margin-bottom: 24px; }
+.btn404{
+    display:inline-block;
+    margin:12px;
+    padding:10px 18px;
+    color:white;
+    text-decoration:none;
+    border-radius:6px;
+    font-size:14px;
+    background: #cf1c21;
+}
+
+/* Container do filtro */
+.filtro-categorias {
+    margin: 20px 0;
+    font-size: 14px;
+}
+
+/* Texto "Filtrar por" */
+.filtro-categorias span {
+    color: #6b7280;
+    margin-right: 8px;
+}
+
+/* Links das categorias */
+.filtro-categorias a {
+    text-decoration: none;
+    color: #570b57;
+    background: #e5e7eb;
+    padding: 6px 12px;
+    border-radius: 20px;
+    margin-right: 6px;
+    transition: all 0.2s ease;
+    display: inline-block;
+}
+
+/* Hover */
+.filtro-categorias a:hover {
+    background: #570b57;
+    color: white;
+}
+
+/* Categoria ativa */
+.filtro-categorias a.ativo {
+    background: #570b57;
+    color: white;
+    font-weight: bold;
+}

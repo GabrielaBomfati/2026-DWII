@@ -12,9 +12,39 @@ $pagina_atual = "catalogo";
 // Inclui a conexão PDO - disponibiliza a variável $pdo
 require_once 'includes/conexao.php';
 
+$stmtCat = $pdo->query('SELECT DISTINCT categoria FROM tecnologias ORDER BY categoria');
+$categorias = $stmtCat->fetchAll();
+
 
 // Buscar todos os requisitos - query() para SELECTs sem parâmetros
-$stmt = $pdo->query('SELECT * FROM tecnologias ORDER BY nome ASC');
+// Capturar o filtro da URL (vazio se não existir)
+$busca = trim($_GET['busca'] ?? '');
+$categoria = trim($_GET['categoria'] ?? '');
+
+if ($busca) {
+    $stmt = $pdo->prepare(
+    'SELECT * FROM tecnologias 
+     WHERE nome LIKE :termo1 OR descricao LIKE :termo2 
+     ORDER BY nome'
+);
+
+$stmt->execute([
+    'termo1' => "%$busca%",
+    'termo2' => "%$busca%"
+]);
+    
+} elseif ($categoria) {
+    $stmt = $pdo->prepare(
+        'SELECT * FROM tecnologias 
+         WHERE categoria = :cat 
+         ORDER BY nome'
+    );
+    $stmt->execute(['cat' => $categoria]);
+
+} else {
+    $stmt = $pdo->query('SELECT * FROM tecnologias ORDER BY nome');
+}
+
 $tecnologias = $stmt->fetchAll();
 ?>
 <!DOCTYPE html>
@@ -26,8 +56,29 @@ $tecnologias = $stmt->fetchAll();
     <!-- Container e classes vêm do CSS global -->
 <div class="container">
     <h1 class="titulo-secao">🗄️ Catálogo de Tecnologias</h1>
+    <!-- FORM DE BUSCA -->
+<form method="get" style="margin-bottom: 15px;">
+    <input type="text" name="busca" placeholder="Buscar tecnologia..." 
+           value="<?php echo htmlspecialchars($busca); ?>">
+    <button type="submit">Buscar</button>
+</form>
+<div class="filtro-categorias">
+    <span>Filtrar por:</span>
+
+    <a href="index.php" class="<?php echo !$categoria ? 'ativo' : ''; ?>">
+        Todos
+    </a>
+
+    <?php foreach ($categorias as $cat): ?>
+        <a href="index.php?categoria=<?php echo urlencode($cat['categoria']); ?>"
+           class="<?php echo $categoria === $cat['categoria'] ? 'ativo' : ''; ?>">
+           
+            <?php echo htmlspecialchars($cat['categoria']); ?>
+        </a>
+    <?php endforeach; ?>
+</div>
     <p style="color: #6b7280; margin-bottom: 20px;">
-        <?php echo count($tecnologias); ?> tecnologia(s) cadastrada(s)
+        <?php echo count($tecnologias); ?> item(s) encontrado(s)
     </p>
     <!-- Loop pleos registros do banco -->
      <?php foreach ($tecnologias as $tec): ?>
@@ -43,7 +94,7 @@ $tecnologias = $stmt->fetchAll();
             <p><?php echo htmlspecialchars($tec['descricao']); ?></p>
 
         <!-- Caminho absoluto /03_pdo/ garante que funcione de qualquer nível -->
-         <a href="/03_pdo/detalhe.php?id=<?php echo $tec['id']; ?>"
+         <a href="/03_pdo/detalhe.php?id=<?php echo $tec['id']; ?>&categoria=<?php echo urlencode($categoria); ?>"
          style="color: #570b57; font-size: 14px; font-weight: bold;
          display: inline-block; margin-top: 10px;">
          Ver detalhes

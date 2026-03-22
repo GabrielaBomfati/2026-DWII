@@ -1,3 +1,9 @@
+<!--
+ * Disciplina: Desenvolvimento Web II (DWII)
+ * Aula: 05 - PHP + MariaDB: persistência de dados via PDO
+ * Autor: Gabriela Bomfati Garcia
+ * Data: 16/03/2026
+-->
 <?php
 // Caminho relativo da subpasta 03_pdo/ até a raiz (usanda pelo CSS global)
 $caminho_raiz = '../';
@@ -7,10 +13,10 @@ require_once 'includes/conexao.php';
 
 // Validar o ID recebido via GET - retorna false se não for inteiro válido
 $id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
+$categoria = trim($_GET['categoria'] ?? '');
 
 if(!$id){
-    // ID inválido ou ausente - redirecionar para a lista
-    header('Location: index.php');
+    include '404.php';
     exit;
 }
 
@@ -20,8 +26,7 @@ $stmt->execute (['id' => $id]);
 $tec = $stmt->fetch(); // fetch() retorna UMA linha (ou false se não encontrou)
 
 if (!$tec) {
-    // Registro não encontrado - redirecionar para a lista
-    header('Location: index.php');
+    include '404.php';
     exit;
 }
 
@@ -38,7 +43,7 @@ $pagina_atual = "catalogo";
 </head>
 <body>
     <div class="container">
-        <a href="index.php" style="color: #570b57; font-weight: bold;">
+        <a href="index.php<?php echo $categoria ? '?categoria=' . urlencode($categoria) : ''; ?>" style="color: #570b57; font-weight: bold;">
             Voltar ao catálogo</a>
 
         <div class="card" style="margin-top: 20px;">
