@@ -61,6 +61,16 @@ $aulas = [
         "cor" => "#c2410c",
         "conceitos" => "PDO, query(), prepare() + execute(), filter_input(), htmlspecialchars(), header() + exit.",
     ],
+    [
+    "numero" => "06",
+    "nome" => "Autenticação com Sessões",
+    "descricao" => "Página pública que permite acessar a área restrita com login, utilizando sessões para controle de acesso.",
+    "link" => "04_sessoes/publico.php",
+    "icone" => "🔐",
+    "cor" => "#3b579d",
+    "conceitos" => "PHP Sessions, login/logout, controle de acesso, proteção de páginas."
+
+    ],
 ];
 ?>
 <!DOCTYPE html>
