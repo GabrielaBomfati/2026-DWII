@@ -19,6 +19,13 @@
 require_once __DIR__ . '/includes/auth.php';
 requer_login();
 
+// No painel.php, após requer_login():
+if (!isset($_SESSION['visitas'])) {
+    $_SESSION['visitas'] = 0;
+}
+$_SESSION['visitas']++;
+// A cada F5 o contador aumenta — por quê?
+
 $titulo_pagina = 'Painel - Área Restrita';
 $caminho_raiz = '../';
 $pagina_atual = '';
@@ -29,6 +36,13 @@ $pagina_atual = '';
     <?php require_once __DIR__ . '/../includes/cabecalho.php'; ?>
 </head>
 <body>
+
+<?php if (isset($_SESSION['flash'])): ?>
+    <div class="boasvindas">
+        <?php echo htmlspecialchars($_SESSION['flash']); ?>
+    </div>
+    <?php unset($_SESSION['flash']); ?>
+<?php endif; ?>
     
 <div class="container">
     <div class="alerta-sucesso">
@@ -39,6 +53,9 @@ $pagina_atual = '';
     <p><strong>Login realizado em:</strong>
     <?php echo htmlspecialchars($_SESSION['logado_em'] ?? '-') ?>
     </p>
+    <p><strong>Número de visitas nesta sessão:</strong>
+    <?php echo $_SESSION['visitas']; ?>
+    </p>
     </div>
     <br> 
 
@@ -46,6 +63,8 @@ $pagina_atual = '';
     <h3>📊 Painel de controle</h3>
     <p>Este conteúdo só é visível para usuários autenticados.</p>
     <p>Nas próximas aulas este painel terá funcionalidades reais (CRUD).</p>
+    <p>Deseja acessar seu perfil?</p>
+    <a href="perfil.php" style="color: #570b57">👤 Ver Perfil</a>
 </div>
 
 <p style="margin-top: 24px; text-align: center;">

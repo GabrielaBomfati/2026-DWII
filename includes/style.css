@@ -225,6 +225,15 @@ button[type="submit"]:hover { background: #dd9cdd; }
 }
 .alerta-sucesso h3 { color: #3ba34a; margin-top: 0; }
 
+.boasvindas {
+  background: #e5e7eb;
+  border-left: 4px solid #af06d1;
+  border-radius: 0 8px 8px 0;
+  padding: 18px 22px;
+  max-width:800px;
+  margin:35px auto;
+}
+
 
 
 footer{

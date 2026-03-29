@@ -11,10 +11,8 @@
 session_start();
 
 // Se já estiver logado, ir direto ao painel
-if (isset($_SESSION['usuario'])){
-    header('Location: login.php');
-    exit;
-}
+require_once __DIR__ . '/includes/auth.php';
+redirecionar_se_logado();
 
 // Credenciais válidas (fixas por enquanto - virão do BD na Aula 07)
 $USUARIO_VALIDO = 'admin';
@@ -22,21 +20,41 @@ $SENHA_VALIDA = 'dwii2026';
 
 $erro = '';
 $login = '';
+$agora= time();
+
+// Verifica se está bloqueado
+if (isset($_SESSION['bloqueado_ate']) && $agora < $_SESSION['bloqueado_ate']) {
+    $erro = 'Tentativas esgotadas. Aguarde um momento e tente novamente.';
+}
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $login = trim($_POST['usuario'] ?? '');
-    $senha = trim($_POST['senha'] ?? '');
+    if (!empty($erro)) {
+        // Já está bloqueado, não faz nada
+    } else {
+            $login = trim($_POST['usuario'] ?? '');
+            $senha = trim($_POST['senha'] ?? '');
 
     if($login === $USUARIO_VALIDO && $senha === $SENHA_VALIDA) {
         // Credenciais corretas - nov ID de sessão após login (segurança)
         session_regenerate_id(true);
         $_SESSION['usuario'] = $login;
         $_SESSION['logado_em'] = date('d/m/Y \à\s H:i');
+        // Zera tentativas
+        $_SESSION['tentativas'] = 0;
+        // Flash Message 
+        $_SESSION['flash'] = "Bem-vindo(a), $login!";
         header('Location: painel.php');
         exit;
-    } else{
-        // Mensagem genérica - nunca diga qual campo está errado
-        $erro = 'Usuário ou senha incorretos.';
+    } else {
+            // Contador tentativas
+            $_SESSION['tentativas'] = ($_SESSION['tentativas'] ?? 0) + 1;
+            // Se errar 3 vezes, bloqueia
+            if ($_SESSION['tentativas'] >= 3) {
+                $_SESSION['bloqueado_ate'] = time() + 60; // 60 segundos
+                $_SESSION['tentativas'] = 0;
+            }
+            $erro = 'Usuário ou senha incorretos.';
+        }
     }
 }
 
