@@ -12,7 +12,7 @@ $logado= isset($_SESSION['usuario']);
 
 $titulo_pagina = 'Página Pública';
 $caminho_raiz = '../';
-$pagina_atual = '';
+$pagina_atual = 'login';
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">

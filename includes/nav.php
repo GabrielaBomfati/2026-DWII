@@ -57,4 +57,14 @@ function menu_class($item, $atual) {
     <?php echo menu_class("catalogo", $pagina_atual); ?>>
      🗄️ Catálogo
   </a>
+  
+  <a href="<?php echo $caminho_raiz; ?>04_sessoes/publico.php"
+    <?php echo menu_class("login", $pagina_atual); ?>>
+     🔐 Login
+  </a>
+
+  <a href="<?php echo $caminho_raiz; ?>05_crud/index.php"
+    <?php echo menu_class("crud", $pagina_atual); ?>>
+     📚 CRUD
+  </a>
 </nav>

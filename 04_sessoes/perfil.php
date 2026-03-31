@@ -12,7 +12,7 @@ requer_login();
 
 $titulo_pagina = 'Perfil do Usuário';
 $caminho_raiz = '../';
-$pagina_atual = '';
+$pagina_atual = 'login';
 ?>
 
 <!DOCTYPE html>

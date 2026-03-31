@@ -60,7 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 $titulo_pagina = 'Login - Área Restrita';
 $caminho_raiz = '../';
-$pagina_atual = '';
+$pagina_atual = 'login';
 ?>
 
 <!DOCTYPE html>

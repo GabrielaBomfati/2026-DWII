@@ -28,7 +28,7 @@ $_SESSION['visitas']++;
 
 $titulo_pagina = 'Painel - Área Restrita';
 $caminho_raiz = '../';
-$pagina_atual = '';
+$pagina_atual = 'login';
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
