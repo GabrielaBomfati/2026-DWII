@@ -170,7 +170,7 @@ label{
 
 label:first-of-type { margin-top: 0; }
 
-input[type="text"],input[type="email"], input[type="password"],
+input[type="text"],input[type="email"], input[type="password"],input[type="number"],input[type="url"],
 textarea{
     width:100%;
     padding:10px;
