@@ -51,7 +51,6 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     //3.Persiste no banco se não há erros
     if($erro === ''){
         $pdo = conectar();
-
         $sql = 'INSERT INTO projetos (nome, descricao, tecnologias, link_github, ano)
                 VALUES (:nome, :descricao, :tecnologias, :link_github, :ano)';
 

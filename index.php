@@ -71,6 +71,15 @@ $aulas = [
     "conceitos" => "PHP Sessions, login/logout, controle de acesso, proteção de páginas."
 
     ],
+    [
+    "numero" => "07",
+    "nome" => "CRUD - Create e Read",
+    "descricao" => "Sistema de cadastro e listagem de projetos com persistência em banco de dados utilizando PDO.",
+    "link" => "05_crud/index.php",
+    "icone" => "📚",
+    "cor" => "#ec4899",
+    "conceitos" => "PHP + PDO, INSERT, SELECT, prepared statements, validação de formulário, persistência de dados."
+],
 ];
 ?>
 <!DOCTYPE html>
