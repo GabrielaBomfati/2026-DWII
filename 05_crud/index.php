@@ -1,11 +1,13 @@
 <?php
 /**
  * Disciplina: Desenvolvimento Web II (DWII)
- * Aula: 07 - CRUD: Create e Read
+ * Aula: 08 - CRUD Completo: Udpdate e Delete
  * Arquivo: 05_crud/index.php
  * Autor: Gabriela Bomfati Garcia
- * Data: 30/03/2026
- * Descrição: Exibe o formulário de cadastro e processa o INSERT
+ * Data: 06/04/2026
+ * Descrição: Ponto de entrada do módulo CRUD.
+ *            Lista todos os projetos cadastradados (Read) e 
+ *            exibe mensagens de feedback após cada operação.
  */
 
 // Proteção: apenas usuários autenticados 
@@ -46,8 +48,17 @@ $stmt = $pdo->prepare($sql);
 $stmt->execute($params);
 $projetos = $stmt->fetchAll();
 
-// Mensagem de sucesso após o cadastro
+// Detecção de mensagens de feedback(padrãO PRG)
+// Após cada operação, o arquivo responsável redireciona para cá
+// com um parâmetro GET indicando o resultado.
 $cadastroOk = isset($_GET['cadastro']) && $_GET['cadastro'] === 'ok';
+$editadoOk = isset($_GET['editado']) && $_GET['editado'] === 'ok';
+$excluidoOk = isset($_GET['excluido']) && $_GET['excluido'] === 'ok';
+
+// Erros redirecionados por editr.php e excluir.php
+$erroMsg = isset($_GET['erro']) ? $_GET['erro'] : '';
+
+// Variáveis para cabecalho.php
 
 $titulo_pagina = 'Meus Projetos - Portfólio';
 $caminho_raiz = '../';
@@ -64,7 +75,7 @@ $pagina_atual = 'crud';
     <div style="display: flex; justify-content: space-between;
                 align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 20px;">
         <h1 class="titulo-secao" style="margin-top: 0;">🗂️ Meus Projetos</h1>
-        <a href="cadastrar.php" class="btn-primario">➕ Novo Projeto</a>
+        <a href="cadastrar.php" class="btn-primario" style="color: #570b57;">➕ Novo Projeto</a>
         
         <div class="form-container">
         <form  method="get">
@@ -87,12 +98,36 @@ $pagina_atual = 'crud';
         </div>
     </div>
 
+<!-- Mensagens de feedback após operações (padrão PRG) -->
+
     <?php if ($cadastroOk):?>
         <div class="alerta-sucesso">
             <p style="margin: 0;">✅ Projeto cadastrado com sucesso!</p>
         </div>
     <?php endif; ?>
+    <?php if ($editadoOk):?>
+        <div class="alerta-sucesso">
+            <p style="margin: 0;">✅ Projeto editado com sucesso!</p>
+        </div>
+    <?php endif; ?>
+    <?php if ($excluidoOk):?>
+        <div class="alerta-sucesso">
+            <p style="margin: 0;">✅ Projeto excluido com sucesso!</p>
+        </div>
+    <?php endif; ?>
     <br>
+
+    <!-- Erros redirecionados por editar.php / excluir.php -->
+     <?php if ($erroMsg === 'nao_encontrado'): ?>
+        <div class="alerta-erro">
+            <p style="margin: 0;">⚠️ Projeto não encontrado. Ele
+                pode já ter sido removido. </p>
+        </div>
+     <?php elseif ($erroMsg === 'id_invalido'): ?>
+        <div class="alerta-erro">
+            <p style="margin: 0;">⚠️ Requisição inválida. </p>
+        </div>
+    <?php endif; ?>
 
     <?php if (empty($projetos)): ?>
         <!-- Estado vazio: nenhum projeto ainda -->
@@ -101,7 +136,7 @@ $pagina_atual = 'crud';
                     <p style="font-size: 40px; margin: 0 0 12px;">📭</p>
                     <p style="font-size: 16px; margin: 0 0 16px;">
                         Nenhum projeto cadastrado ainda.</p>
-                    <a href="cadastrar.php" class="btn-primario">➕
+                    <a href="cadastrar.php" class="btn-primario" style="color: #570b57;">➕
                     Cadastrar o primeiro projeto</a>
         </div>
 
@@ -123,17 +158,26 @@ $pagina_atual = 'crud';
                     </p>
 
                     <p style="margin: 0 0 12px; color: #6b7280; font-size: 14px;">
-                       🗓️ <?php echo htmlspecialchars($projeto['ano']); ?>
+                       🗓️ <?php echo (int) $projeto['ano']; ?>
                     </p>
 
                     <?php if ($projeto['link_github']): ?>
-                        <a style="#570b57;" href="<?php echo htmlspecialchars($projeto['link_github']); ?>"
+                        <a style="color: #570b57;" href="<?php echo htmlspecialchars($projeto['link_github']); ?>"
                         target="_blank"
                         rel="noopener noreferrer"
                         class="btn-secundario">🔗 Ver no GitHub</a>
                     <?php endif; ?>
-                    <a style="color: #570b57;" href="detalhe.php?id=<?php echo $projeto['id']; ?>"
+                    <a style="color: #570b57;" href="detalhe.php?id=<?php echo  $projeto['id']; ?>"
                         class="btn-secundario"> 🔓 Ver detalhes</a>
+                    <!-- Botões de ação para operações U e D do CRUD
+                     (int) no ID garante que só um inteiro chegue à URL -
+                     impede qualquer injeção via parâmtro -->
+                     <div style="margin-top: 12px; display: flex; gap: 8px; flex-wrap: wrap;">
+                        <a  style="color: #570b57;" href="editar.php?id=<?php echo (int) $projeto['id']; ?>"
+                            class="btn-secundario"> ✏️ Editar</a>
+                            <a style="color: #570b57;" href="excluir.php?id=<?php echo (int) $projeto['id']; ?>"
+                            class="btn-perigo"> 🗑️ Excluir</a>
+                     </div>
                 </div>
             <?php endforeach; ?>
         </div>

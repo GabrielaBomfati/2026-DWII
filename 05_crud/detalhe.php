@@ -62,7 +62,7 @@ $pagina_atual = 'crud';
 
     <?php if ($projeto['link_github']): ?>
         <p>
-            <a style="#570b57;" href="<?php echo htmlspecialchars($projeto['link_github']); ?>"
+            <a style="color: #570b57;" href="<?php echo htmlspecialchars($projeto['link_github']); ?>"
                target="_blank"
                class="btn-secundario">
                🔗 Ver no GitHub
@@ -70,8 +70,8 @@ $pagina_atual = 'crud';
         </p>
     <?php endif; ?>
 
-    <p style="margin-top: 20px; color: #570b57;">
-        <a href="index.php">Voltar</a>
+    <p style="margin-top: 20px;">
+        <a style="color: #570b57;" href="index.php">Voltar</a>
     </p>
 </div>
 
