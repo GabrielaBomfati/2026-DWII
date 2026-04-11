@@ -65,7 +65,10 @@ $pagina_atual = 'login';
     <p>Nas próximas aulas este painel terá funcionalidades reais (CRUD).</p>
     <p>Deseja acessar seu perfil?</p>
     <a href="perfil.php" style="color: #570b57">👤 Ver Perfil</a>
-    <a href="../05_crud/index.php" style="color: #570b57">🗂️ Acessar/Cadastrar projetos</a>
+    <!-- Link para o módulo CRUD implementado na Aula 08.
+         O caminho sobe um nível (../) para sar de 04_sessoes/
+         e e tão entra em 05_crud/. -->
+    <a href="../05_crud/index.php" class="btn-primario" style="color: #570b57">🗂️ Gerenciar projetos</a>
 </div>
 
 <p style="margin-top: 24px; text-align: center;">

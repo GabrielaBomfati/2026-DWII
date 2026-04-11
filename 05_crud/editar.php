@@ -103,7 +103,7 @@ if ($nome === '' || $descricao === '' || $tecnologias === '')
 // Variáveis para o cabecalho.php
 $titulo_pagina = 'Editar Projeto - Portfólio';
 $caminho_raiz = '../';
-$pagina_atual = '';
+$pagina_atual = 'crud';
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
