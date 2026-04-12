@@ -60,9 +60,11 @@ $link_github = trim($_POST['link_github'] ?? '');
 $ano = (int) ($_POST['ano'] ??  date ('Y'));
 
 // Validação
-if ($nome === '' || $descricao === '' || $tecnologias === '') 
-    { $erro = 'Preencha todos os campos obrigatórios.';
-    }
+if ($nome === '' || $descricao === '' || $tecnologias === '') {
+    $erro = 'Preencha todos os campos obrigatórios.';
+} elseif ($ano < 2000 || $ano > (int) date('Y')) {
+    $erro = 'Ano inválido. Informe um ano entre 2000 e o atual.';
+}
 
     // UPDATE - só executa se nãi há erro
     if ($erro === ''){
@@ -136,8 +138,7 @@ $pagina_atual = 'crud';
 
         <div class="campo">
             <label class="label-campo">Descrição *</label>
-            <textarea name="descricao" class="input-texto" rows="4">
-                      <?php echo htmlspecialchars($projeto['descricao']); ?></textarea>
+            <textarea name="descricao" class="input-texto" rows="4"><?php echo htmlspecialchars($projeto['descricao']); ?></textarea>
         </div>
 
         <div class="campo">
@@ -156,7 +157,7 @@ $pagina_atual = 'crud';
             <label class="label-campo">Ano *</label>
             <input type="number" name="ano" class="input-texto"
                     value="<?php echo (int) $projeto['ano']; ?>"
-                    min="2000" max="2099">
+                    min="2000" max="<?php echo date('Y'); ?>">
         </div>
 
         <div style="display: flex; gap: 12px; margin-top: 8px;">

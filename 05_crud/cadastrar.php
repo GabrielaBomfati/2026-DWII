@@ -44,8 +44,8 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         $erro = 'A descrição do projeto é obrigatória.';
     }elseif ($form['tecnologias'] === ''){
         $erro = 'Informe ao menos uma tecnologia.';
-    }elseif ($form['ano'] < 2000 || $form['ano'] > (int) date ('Y') + 1){
-        $erro = 'Ano inválido.';
+    }elseif ($form['ano'] < 2000 || $form['ano'] > (int) date ('Y')){
+        $erro = 'Ano inválido. Informe um ano entre 2000 e o atual.';
     }
 
     //3.Persiste no banco se não há erros
@@ -107,8 +107,7 @@ $pagina_atual = 'crud';
             <textarea id="descricao"
                       name ="descricao"
                       rows="4"
-                      placeholder="Descreva o projeto em 2-3 frases...">
-                      <?php echo htmlspecialchars($form['descricao']); ?></textarea>
+                      placeholder="Descreva o projeto em 2-3 frases..."><?php echo htmlspecialchars($form['descricao']); ?></textarea>
 
             <label for="tecnologias">Tecnologias usadas: <span 
             style="color: #cf1c21;">*</span></label>
@@ -134,7 +133,7 @@ $pagina_atual = 'crud';
                     name ="ano"
                     value="<?php echo htmlspecialchars($form['ano']); ?>"
                     min="2000"
-                    max="<?php echo date('Y') + 1; ?>">
+                    max="<?php echo date('Y'); ?>">
 
             <button type="submit"> 💾 Salvar Projeto</button>
 
