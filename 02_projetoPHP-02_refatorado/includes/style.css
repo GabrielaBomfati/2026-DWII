@@ -3,6 +3,7 @@
  * Disciplina : Desenvolvimento Web II (2026-DWII)
  * Aula       : 04 — PHP para Web: Formulários, GET e POST
  * Autor      : Gabriela Bomfati Garcia
+ * Data       : 13/04/2026
  * Escopo     : Estilos globais compartilhados por todas as aulas
  * ════════════════════════════════════════════════════════════
  *
@@ -39,29 +40,22 @@ header{
     text-align:center;
     margin: 20px;
 }
-h1{
-    text-align: center;
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    color:#570b57;
-    
-}
-h2{
+
+.nome{
     text-align: center;
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     color:#ab5084;
     
 }
 
-p{
+.aps{
     text-align:center;
     font-family:Arial, Helvetica, sans-serif;
     font-size:larger;
     color:#570b57;
     
 }
-body {
-    background-color:white; 
-}
+
 
  main{
     background-color:#EDDCED;
@@ -70,22 +64,11 @@ body {
     width: 900px;
     padding: 30px;
     margin: auto;
+    margin-top: 20px;
     text-align:center;
 
  }
- footer{
-    padding: 10px;
-    margin: 20px;
-    text-align:center;
-    border:4px solid #af06d1;
-
- }
- header{
-    padding: 10px;
-    margin: 20px;
-    text-align:center;
-    border:4px solid #af06d1; 
- }
+ 
  img{
     border: 4px solid #af06d1;
  }

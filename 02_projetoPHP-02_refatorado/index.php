@@ -5,7 +5,7 @@
  * Disciplina: Desenvolvimento Web II (2026-DWII)
  * Aula: 04 - PHP para Web: Formulários. GET e POST
  * Autor: Gabriela Bomfati Garcia
- * 
+ * Data:  13/04/2026
  * Conceitos: Ponto de entrada, array associativo. foreach, date(), htmlspecialchars()
  * ======================================================================================
  * 
@@ -60,13 +60,13 @@ include __DIR__ . '/includes/cabecalho.php';
   <!-- Bloco de texto + cards informativos -->
   <div class="texto-container">
 
-    <h2>
+    <h2 class="nome">
       Olá, eu sou <?php echo htmlspecialchars($nome); ?>! 👋
     </h2>
 
     <?php
     ?>
-    <p><?php echo htmlspecialchars($descricao); ?></p>
+    <p class="aps"><?php echo htmlspecialchars($descricao); ?></p>
 
     <div class="info-cards">
 
