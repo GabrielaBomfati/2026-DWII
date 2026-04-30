@@ -49,13 +49,13 @@ $logado = isset($_SESSION['usuario']);
     <?php echo menu_class('sobre', $pagina_atual); ?>>
     👩🏻 Sobre
   </a>
-    <a href="<?php echo $caminho_raiz; ?>01_php-intro/projetos.php"
+    <a href="<?php echo $caminho_raiz; ?>projetos.php"
     <?php echo menu_class('projetos', $pagina_atual); ?>>
      🚀 Projetos
   </a>
 
   <!-- Link para o formulário - Aula 04 -->
-     <a href="<?php echo $caminho_raiz; ?>02_formularios/contato.php"
+     <a href="<?php echo $caminho_raiz; ?>contato.php"
     <?php echo menu_class('contato', $pagina_atual); ?>>
      📬Entre em contato
   </a>

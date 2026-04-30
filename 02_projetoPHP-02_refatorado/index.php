@@ -52,7 +52,7 @@ include __DIR__ . '/includes/cabecalho.php';
   <!-- Foto de perfil -->
   <div class="foto-container">
     <img
-      src="<?php echo $caminho_raiz; ?>00_apresentacao/imgs/foto.jpg"
+      src="<?php echo $caminho_raiz; ?>includes/imgs/foto.jpg"
       alt="Foto de <?php echo htmlspecialchars($nome); ?>"
       class="foto-perfil">
   </div>

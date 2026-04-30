@@ -1,18 +1,21 @@
 <?php
 /**
  * ==================================================================
- * ARQUIVO: 02_formularios/contato.php (versão com validação)
  * Disciplina: Desenvolvimento Web II (2026-DWII)
- * Aula: 04 - PHP para Web: Formulários, GET e POST
+ * Projeto: Portfólio Pessoal - versão refatorada
+ * Arquivo: contato.php (migrado de 02_formularios/contato.php)
  * Autor: Gabriela Bomfati Garcia
- * Conceitos: $_SERVER, REQUEST_METHOD, trim(), empty(),
- *            strlen(), array de erros, separação lógica/visual
+ * Data: 27/04/2026
+ * Padrão: PRG - Post/Redirect/Get
  * =====================================================================
  * 
  * Página de contato - primeira versão final.
  * cabaecalho.php gerar o <head> completo (incluindo o <link>
  * para style.css) e o <bofy> até o <main>
  */
+if (session_status() === PHP_SESSION_NONE){
+    session_start();
+}
 
 
 // RECEBER DADOS DO FORUMLARIO
@@ -41,12 +44,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $assunto = trim($_POST['assunto'] ?? '');
     $mensagem = trim($_POST['mensagem'] ?? '');
 
+
 //VALIDAÇÕES
 // $erros[] = 'texto' adiciona um item ao array.
 // Ao final, se $erros estiver vazio, todos os campos são válidos
 if (empty($nome_visitante)){
     $erros[] = 'O campo Nome é obrigatório.';
+}elseif (strlen($nome_visitante) < 3){
+    $erros[] = "O nome deve ter pelo menos 3 caracteres.";
 }
+
 if (empty($email)) {
         $erros[] = 'O campo E-mail é obrigatório.';
 } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -65,7 +72,8 @@ if (empty($mensagem)){
 } elseif (strlen($mensagem) > 500){
     $erros[] = "A mensagem deve ter no máximo 500 caracteres.";
 }
-}
+
+
 // REDIRECIONAR SE NÃO HÁ ERROS
 // header() instrui o navegador a ir pra outra URL
 // OBRIGATORIO: chamado antes de qualuqer saída HTML.
@@ -73,22 +81,28 @@ if (empty($mensagem)){
 // (ex: "Ana Lima" vira "Ana + Lima")
 // exit encerra o PHP imediatamente - sem exit, o código
 // abaixo continuaria executando mesmo após o redirect.
-if (empty($erros) && $_SERVER['REQUEST_METHOD'] === 'POST'){
-    header('Location: obrigado.php?nome=' . urlencode($nome_visitante) . '&assunto=' . urlencode($assunto));
+if (empty($erros)){
+    $_SESSION['nome'] = $nome_visitante;
+    $_SESSION['assunto'] = $assunto;
+    header('Location: obrigado.php');
     exit;
+}
 }
 // VARIÁVEIS DO TEMPLATE
 // Definida ANTES do include - cabecalho.php as usa par 
 // montar o <title>, o <link> do CSS e o item ativo do menu.
 $nome = "Gabriela Bomfati Garcia";
 $pagina_atual = "contato";
-$caminho_raiz = "../"; // sobe de 02_formularios/ até a raiz
+$caminho_raiz = "./"; // sobe de 02_formularios/ até a raiz
 $titulo_pagina = "Contato";
 ?>
-
-<!--cabecalho.php gera tudo até <body>--> 
-<?php include '../includes/cabecalho.php'; ?>
-
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <?php include __DIR__ . '/includes/cabecalho.php'; ?>
+</head>
+<body>
+    
 <div class="container">
     <h1 class="titulo-secao"> 📬 Formulário de Contato</h1>
     <?php if (!empty($erros)): ?>
@@ -148,4 +162,6 @@ $titulo_pagina = "Contato";
 
 </form>
 
-<?php include '../includes/rodape.php'; ?>
+<?php include  __DIR__ . '/includes/rodape.php'; ?>
+</body>
+</html>

@@ -1,7 +1,7 @@
 <?php
 /**
  * ===============================================================
- * Arquivo: sobre.php
+ * Arquivo: sobre.php (migrado de 01_php-intro/sobre.php)
  * Disciplina: Desenvolvimento Web II (2026-DWII)
  * Descrição: Página "Sobre" do projeto refatorado
  * Autor: Gabriela Bomfati Garcia
