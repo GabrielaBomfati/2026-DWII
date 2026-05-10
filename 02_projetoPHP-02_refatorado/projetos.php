@@ -30,7 +30,7 @@ require_once __DIR__ . '/includes/conexao.php';
 // Mesma query do 05_crud/index.php - dados do mesmo banco.
 // Qualquer projeto cadastrado pelo painle aparece automaticamente.
 $pdo = conectar();
-$stmt = $pdo->query('SELECT * FROM projetos ORDER BY criado_em DESC');
+$stmt = $pdo->query("SELECT * FROM projetos WHERE status = 'publicado' ORDER BY criado_em DESC");
 $projetos = $stmt->fetchAll();
 // fetchAll() retorna array associativo com todos os registros.
 // Retorna array vazio se não houver projetos - nunca retorna false.

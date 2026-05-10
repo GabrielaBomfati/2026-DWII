@@ -60,7 +60,7 @@ $logado = isset($_SESSION['usuario']);
      📬Entre em contato
   </a>
   <!-- mudar nome para catalogo no lugar de index -->
-   <a href="<?php echo $caminho_raiz; ?>03_pdo/index.php" 
+   <a href="<?php echo $caminho_raiz; ?>catalogo.php" 
     <?php echo menu_class('catalogo', $pagina_atual); ?>>
      🗄️ Catálogo
   </a>
