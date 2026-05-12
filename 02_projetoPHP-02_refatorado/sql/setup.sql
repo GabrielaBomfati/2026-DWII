@@ -109,7 +109,7 @@ CREATE TABLE logs (
     id             INT UNSIGNED  NOT NULL AUTO_INCREMENT,
     tabela_afetada VARCHAR(50)   NOT NULL,
     registro_id    INT UNSIGNED  NOT NULL,
-    acao           ENUM('INSERT','UPDATE','STATUS') NOT NULL,
+    acao           ENUM('INSERT','UPDATE','STATUS', 'LOGIN', 'LOGIN_FAIL') NOT NULL,
     usuario_login  VARCHAR(50)       NULL DEFAULT NULL,
     detalhes       TEXT              NULL,
     criado_em      DATETIME      NOT NULL DEFAULT CURRENT_TIMESTAMP,
